@@ -1,0 +1,9 @@
+The Lord of the Rings: The Fellowship of the Ring;2001;fantasy
+The Hobbit: An Unexpected Journey;2012;fantasy
+300;2007;action
+Rise of the Planet of the Apes;2011;science fiction
+The Matrix;1999;action
+Robin Hood: Men in Tights;1993;comedy
+The Simpsons Movie;2007;comedy
+Guardians of the Galaxy;2014;science fiction
+Bruno;2009;comedy

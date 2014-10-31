@@ -1,0 +1,7 @@
+The Matrix;1999;action
+Pirates of the Caribbean: The Curse of the Black Pearl;2003;comedy
+Monty Python and the Holy Grail;1975;comedy
+Monsters Inc.;2001;comedy
+The Lord of the Rings: The Fellowship of the Ring;2001;fantasy
+300;2007;action
+Gravity;2013;science fiction

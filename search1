@@ -1,0 +1,30 @@
+#!/bin/bash/
+function search_file {
+	n=1
+
+	while read line; do
+		if [[ $line = *"$1"* ]]; then #$1 is the grep we're trying to do
+			echo "${2} : ${n}: $line"
+			let counter++;
+			echo $counter;
+		fi
+		let n++;
+	done < "$2" #$2 is file or dir name
+}
+
+counter=0
+for file in ${*:2}; do 
+	
+	if [[ -f "$file" && $file == *hobbies.txt ]]; then #checking to see if file
+		#if [[ $file == *hobbies.txt ]]; then
+		#search_file "$1" $file
+		#fi
+		search_file "$1" $file
+	fi 
+	if [[ -d "$file" ]]; then #checking to see if directory
+		source $0 "$1" $file/*
+	fi 
+done
+
+#why do i always need to write source
+#limit to first three, abc

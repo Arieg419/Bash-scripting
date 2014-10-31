@@ -1,0 +1,8 @@
+Sherlock Holmes;2009;drama
+The Dictator;2012;comedy
+Hunting Elephants;2013;comedy
+Guardians of the Galaxy;2014;science fiction
+Rise of the Planet of the Apes;2011;science fiction
+Up;2009;adventure
+Pirates of the Caribbean: The Curse of the Black Pearl;2003;comedy
+Monsters Inc.;2001;comedy

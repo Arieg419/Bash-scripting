@@ -1,0 +1,5 @@
+Aladdin;1992;adventure
+Pirates of the Caribbean: The Curse of the Black Pearl;2003;comedy
+Shrek;2001;fantasy
+Home Alone;1990;comedy
+Up;2009;adventure

@@ -1,0 +1,7 @@
+Monsters Inc.;2001;comedy
+Rise of the Planet of the Apes;2011;science fiction
+Shrek;2001;fantasy
+Aladdin;1992;adventure
+Django Unchained;2012;drama
+Johnny English;2003;comedy
+Up;2009;adventure

@@ -1,0 +1,7 @@
+The Hobbit: An Unexpected Journey;2012;fantasy
+The Lord of the Rings: The Fellowship of the Ring;2001;fantasy
+Monsters Inc.;2001;comedy
+Shrek;2001;fantasy
+Home Alone;1990;comedy
+The Simpsons Movie;2007;comedy
+Gravity;2013;science fiction
