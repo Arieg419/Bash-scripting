@@ -1,30 +1,62 @@
 #!/bin/bash/
 function search_file {
-	n=1
-
-	while read line; do
+	n=1	
+	while read line; do #read is exactly like scanf in C, line is a Variable.
 		if [[ $line = *"$1"* ]]; then #$1 is the grep we're trying to do
-			echo "${2} : ${n}: $line"
-			let counter++;
-			echo $counter;
-		fi
+			#cat/echo "${2} : ${n}: $line " | tee -a hobbiesRes.txt | sort hobbiesRes.txt
+			#cut from ; and then sort and then print
+			#cat head -n+3 "${2} : ${n}" | sort
+			result=1;
+			
+		    # cut -d"/" hobbies.txt
+				
+
+
+
+			
+		fi 
 		let n++;
-	done < "$2" #$2 is file or dir name
+	done < "$2"    #$2 is file or dir name, pipeline this thing into a sort function
+
 }
 
-counter=0
-for file in ${*:2}; do 
-	
+
+for file in ${*:2}; do #run on all arguments starting from second argument
+	result=0;
 	if [[ -f "$file" && $file == *hobbies.txt ]]; then #checking to see if file
-		#if [[ $file == *hobbies.txt ]]; then
-		#search_file "$1" $file
-		#fi
-		search_file "$1" $file
+		search_file "$1" $file;
+		if (( ${result} == 1 )); then 	
+			echo "${2}" 
+			
+
+		fi
+
+		# if (( `search_file "$1" $file` == 1 )); then
+		# 	echo "$2 and $1" | sort
+		# fi
+		
 	fi 
+
 	if [[ -d "$file" ]]; then #checking to see if directory
-		source $0 "$1" $file/*
+		source $0 "$1" $file/* 
 	fi 
-done
+done | sort -r 
+
+
+
+
+
+
 
 #why do i always need to write source
 #limit to first three, abc
+#getting commented out.. why?
+#(( ciruclar brackets let me make numerical comparisons ))
+#[[ boxy brackets allow me to make comparisons based on strings, lexographic ]]
+# " string    " helps you keep spaces in a string
+# `  somethin helps you not make an evaluation
+# backticks returns value or creates evaluation of certain expression ``
+
+#where do i put the counter? one idea is to pipeline output to another file and then perform search w/Counter
+#can functions return values in bash? or zsh shell does it even matter
+

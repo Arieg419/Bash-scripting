@@ -1,0 +1,39 @@
+#!/bin/bash
+
+
+# for file in ${*:2}; do
+# 	if [[ -d "$file" && "$file" == "${1}" ]]; then
+# 		echo  "im <HERE!</HERE!>"
+# 	# else
+# 	# 	source $0 "$1" $file/*	
+# 	fi
+
+# done < "${2}"
+# 	 #checking to see if directory
+
+for file in ${*:2}; do #run on all arguments starting from second argument
+	if [[ -f "$file" ]]; then #checking to see if file
+		echo $file	
+	fi
+	
+	if [[ -d "$file" && "$file" == "$1" ]]; then
+		echo "I MADE IT!!!!"	
+	fi
+
+	if [[ -d "$file" && "$file" == "MainDirectory" ]]; then 
+		# echo "HAHHAHAH"	
+		cat $file/"${1}"/movies.txt | sort -r
+
+
+	fi
+
+done
+
+
+
+	
+
+
+
+
+
