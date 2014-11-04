@@ -1,0 +1,60 @@
+#!/bin/bash
+
+function movieList {
+	for file in ${*:2}; do
+
+		# if [[ -d "$file"  && "$file" == "MainDirectory" ]]; then
+		# 	a=`cat $file/"${1}"/movies.txt | cut -d";" -f3 | sort`
+		# 	echo "$a"
+		# 	if [[ "${3}" == "$a" ]]; then
+		# 		echo "YAY"
+		# 	fi  
+				
+			# | grep "${3}" `$file/"${1}"/movies.txt`
+			# | grep "${3}" `$file/"${1}"/movies.txt`
+			while read line; do
+				# a=`echo $line | cut -d";" -f2`
+
+				if [[ `echo "$line" | cut -d";" -f3` == $3 ]]; then 
+				echo $line
+			    fi
+				
+				# echo $a
+				# if [[ $a == "${3}" ]]; then
+				# 	echo "heyyyyyy"
+				# fi
+			done < "$file/"${1}"/movies.txt" 
+	 
+
+	done
+}
+
+# function genreChecker () {
+# 	echo $*
+# } 
+
+# function yearChecker () {
+# 	echo "year checker func"
+# 	echo "$*"
+# }
+
+# toReturn = `pwd`
+# cd $2
+
+for file in ${2} ; do
+	if [[ -d "$file" && "$file" == "MainDirectory" ]]; then
+		movieList "$1" "$2" "$3" 
+		# echo $3
+		
+		# yearChecker	
+	fi
+
+done
+
+# cd $toReturn
+
+# flow of things 
+# 1. call movie list, get all movies 
+# 2. send movie list to genreChecker
+# 3. send all right genre movies to yearChecker
+# 4. echo all movie names in sort in alphabet order

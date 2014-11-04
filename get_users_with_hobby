@@ -1,11 +1,9 @@
 #!/bin/bash/
 function search_file {
 	n=1	
-	echo "somethings happening"
 	while read line; do #read is exactly like scanf in C, line is a Variable.
 		if [[ $line = *"$1"* ]]; then #$1 is the grep we're trying to do
-			echo "foudn you"
-		
+			echo "${2}" | cut -d"/" -f2 
 		fi 
 		let n++;
 	done < "$2"    #$2 is file or dir name, pipeline this thing into a sort function
@@ -13,18 +11,16 @@ function search_file {
 }
 
 
-for file in ${2}; do #run on all arguments starting from second argument
-	if [[ -f "$file" && $file == *hobbies.txt ]]; then 
-		echo "echo in dis"
-		search_file "$1" $file;
-		
+for file in ${*:2}; do #run on all arguments starting from second argument
+	result=0;
+	if [[ -f "$file" && $file == *hobbies.txt ]]; then #checking to see if file
+		search_file "$1" $file
 	fi 
 
 	if [[ -d "$file" ]]; then #checking to see if directory
-		echo "does ig et ere???"
 		source $0 "$1" $file/* 
 	fi 
-done   
+done | sort | head -n+3
 
 
 
