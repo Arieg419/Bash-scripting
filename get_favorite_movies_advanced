@@ -2,51 +2,32 @@
 
 function movieList {
 	for file in ${*:2}; do
-
-		# if [[ -d "$file"  && "$file" == "MainDirectory" ]]; then
-		# 	a=`cat $file/"${1}"/movies.txt | cut -d";" -f3 | sort`
-		# 	echo "$a"
-		# 	if [[ "${3}" == "$a" ]]; then
-		# 		echo "YAY"
-		# 	fi  
-				
-			# | grep "${3}" `$file/"${1}"/movies.txt`
-			# | grep "${3}" `$file/"${1}"/movies.txt`
 			while read line; do
-				# a=`echo $line | cut -d";" -f2`
+				genreOfMovie=`echo "$line" | cut -d";" -f3`
+				if [[ "$genreOfMovie" == "$3" ]]; then
+				   if [[ "$5" == "" ]]; then
+				   	nameofMovie=`echo $line | cut -d ";" -f1`
+				   	echo $nameofMovie
+				   fi
 
-				if [[ `echo "$line" | cut -d";" -f3` == $3 ]]; then 
-				echo $line
+			   		nameofMovie=`echo $line | cut -d ";" -f1`	
+				    yearofMovie=`echo "$line" | cut -d";" -f2`
+				   
+				   if (( $yearofMovie >= $4 && $yearofMovie <= $5 )); then
+				   	finalOutput=`echo $nameofMovie`
+				   	echo $finalOutput
+				   fi
+				   
 			    fi
-				
-				# echo $a
-				# if [[ $a == "${3}" ]]; then
-				# 	echo "heyyyyyy"
-				# fi
-			done < "$file/"${1}"/movies.txt" 
-	 
-
-	done
+			done < "$file/"${1}"/movies.txt"  
+	done | sort	
 }
-
-# function genreChecker () {
-# 	echo $*
-# } 
-
-# function yearChecker () {
-# 	echo "year checker func"
-# 	echo "$*"
-# }
-
-# toReturn = `pwd`
-# cd $2
 
 for file in ${2} ; do
 	if [[ -d "$file" && "$file" == "MainDirectory" ]]; then
-		movieList "$1" "$2" "$3" 
-		# echo $3
 		
-		# yearChecker	
+		movieList "$1" "$2" "$3" "$4" "$5"
+			
 	fi
 
 done

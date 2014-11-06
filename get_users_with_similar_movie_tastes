@@ -1,0 +1,56 @@
+#!/bin/bash
+
+# for file in ${*:2}; do 
+	
+
+# 	userFile=`echo $file | cut -d "/" -f2`
+	
+# 	if [[ -f "$file" && $file == *movies.txt ]]; then #checking to see if userFile
+# 		everyonesMovies=`cat $file | cut -d ";" -f1`
+# 		echo "$everyonesMovies"
+# 		echo "END"
+# 	fi 
+
+# 	if [[ -d "$file" && $userFile != $1 ]]; then
+# 		if [[ "$file" == "MainDirectory" ]]; then
+# 			MainDirectory=$file
+# 		fi
+# 		echo "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
+# 		source $0 "$1" $file/* 
+# 	fi 
+
+# 	if [[ -d "$file" && $userFile == $1 ]]; then
+# 		if [[ "$file" == "MainDirectory" ]]; then
+# 			MainDirectory=$file
+# 		fi
+# 		echo "ENTERING SPECIAL USER <DIREC></DIREC>TORY"
+# 		source $0 "$1" $file/* 
+# 		# echo "entering helper script"
+# 		# source helper_script4 "$1" $file/*
+# 	fi 
+
+
+# done 
+
+movieCount=0;
+
+for file in ${*:2}; do 
+
+
+	while read line1; do
+
+	    echo "These are rachels movies! $line1"
+
+		while read line2; do
+
+		echo "These are omers movies !!!!$line2"
+
+	    done < $file/omer/movies.txt
+
+	done < $file/rachel/movies.txt
+
+done 
+
+
+
+

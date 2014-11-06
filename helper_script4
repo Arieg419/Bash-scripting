@@ -1,0 +1,35 @@
+#!/bin/bash
+
+# while read line; do #read is exactly like scanf in C, line is a Variable.
+#  #$1 is the grep we're trying to do
+# echo "$line"
+# done < "$1"
+
+echo "Fetching other Users Movies!!!!!"	
+
+userFile=`echo $file | cut -d "/" -f2`
+
+if [[ -d "$file" && $userFile == $1 ]]; then
+		if [[ "$file" == "MainDirectory" ]]; then
+			MainDirectory=$file
+		fi
+		echo "ENTERING SPECIAL USER <DIREC></DIREC>TORY"
+		source $0 "$1" $file/* 
+fi 
+
+	
+	if [[ -f "$file" && $file == *movies.txt ]]; then #checking to see if file
+		# source helper_script4 $file $1 $MainDirectory	
+		# listHolder$i=`echo $file`
+		# echo listHolder$i
+		echo "searching for SPECIAL FILEEEE"
+		specialUser=`cat $file | cut -d ";" -f1`
+		echo "$specialUser"
+		let i++;
+		echo "END"
+	fi 
+
+
+
+# echo $1
+# echo $2	

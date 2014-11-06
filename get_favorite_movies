@@ -3,12 +3,12 @@
 
 
 for file in ${*:2}; do #run on all arguments starting from second argument
-
-	if [[ -d "$file" && "$file" == "MainDirectory" ]]; then 	
-		cat $file/"${1}"/movies.txt | cut -d ";" -f1 $file/"${1}"/movies.txt  | sort 
+	# echo "this is running"
+	if [[ -d "$file" && "$file" == "MainDirectory" ]]; then 
+		cat $file/"${1}"/movies.txt | cut -d ";" -f1 $file/"${1}"/movies.txt  | sort
 	fi
 
-done 2> error.txt	 
+done  2> error.txt
 
 
 

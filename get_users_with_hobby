@@ -3,7 +3,7 @@ function search_file {
 	n=1	
 	while read line; do #read is exactly like scanf in C, line is a Variable.
 		if [[ $line = *"$1"* ]]; then #$1 is the grep we're trying to do
-			echo "${2}" | cut -d"/" -f2 
+			echo "${2}" | cut -d "/" -f2 
 		fi 
 		let n++;
 	done < "$2"    #$2 is file or dir name, pipeline this thing into a sort function
