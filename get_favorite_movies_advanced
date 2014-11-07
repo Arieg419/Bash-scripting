@@ -1,36 +1,70 @@
 #!/bin/bash
 
-function movieList {
-	for file in ${*:2}; do
-			while read line; do
-				genreOfMovie=`echo "$line" | cut -d";" -f3`
-				if [[ "$genreOfMovie" == "$3" ]]; then
-				   if [[ "$5" == "" ]]; then
-				   	nameofMovie=`echo $line | cut -d ";" -f1`
-				   	echo $nameofMovie
-				   fi
+# function movieList {
+# 	for file in ${*:2}; do
+# 			while read line; do
+# 				genreOfMovie=`echo "$line" | cut -d";" -f3`
+# 				if [[ "$genreOfMovie" == "$3" ]]; then
+# 				   if [[ "$5" == "" ]]; then
+# 				   	nameofMovie=`echo $line | cut -d ";" -f1`
+# 				   	echo $nameofMovie
+# 				   fi
 
-			   		nameofMovie=`echo $line | cut -d ";" -f1`	
-				    yearofMovie=`echo "$line" | cut -d";" -f2`
+# 			   		nameofMovie=`echo $line | cut -d ";" -f1`	
+# 				    yearofMovie=`echo "$line" | cut -d";" -f2`
 				   
-				   if (( $yearofMovie >= $4 && $yearofMovie <= $5 )); then
-				   	finalOutput=`echo $nameofMovie`
-				   	echo $finalOutput
-				   fi
+# 				   if (( $yearofMovie >= $4 && $yearofMovie <= $5 )); then
+# 				   	finalOutput=`echo $nameofMovie`
+# 				   	echo $finalOutput
+# 				   fi
 				   
-			    fi
-			done < "$file/"${1}"/movies.txt"  
-	done | sort	
-}
+# 			    fi
+# 			done < "$file/"${1}"/movies.txt"  
+# 	done | sort	
+# }
 
-for file in ${2} ; do
-	if [[ -d "$file" && "$file" == "MainDirectory" ]]; then
+# for file in ${2} ; do
+# 	if [[ -d "$file" && "$file" == "MainDirectory" ]]; then
 		
-		movieList "$1" "$2" "$3" "$4" "$5"
+# 		movieList "$1" "$2" "$3" "$4" "$5"
 			
-	fi
+# 	fi
 
-done
+# done
+function movieList {
+	# echo $1 $2 $3 $4
+	while read line; do
+		genreOfMovie=`echo "$line" | cut -d";" -f3`
+		nameofMovie=`echo "$line" | cut -d ";" -f1`
+		yearofMovie=`echo "$line" | cut -d";" -f2`
+
+		echo $yearofMovie
+		echo $3
+		echo $4
+			
+		if [[ "$genreOfMovie" == "$2" && $5 == null ]]; then
+		echo "$nameofMovie $genreOfMovie"
+		
+	    fi
+
+	    if [[ "$genreOfMovie" == "$2" ]]; then
+	    	if (( $yearofMovie >= $4 && $yearofMovie <= $5 )); then
+	    		echo $nameofMovie
+	    	fi
+	    fi
+	    
+	done <"$1"/movies.txt
+}
+	
+	movieList "$1" "$2" "$3" "$4"
+
+
+
+
+#$1- name of person
+#$2 - genre of movie
+#$3 - year optional
+#$4 - year optional
 
 # cd $toReturn
 

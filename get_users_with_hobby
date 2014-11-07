@@ -1,32 +1,47 @@
-#!/bin/bash/
-function search_file {
-	n=1	
-	while read line; do #read is exactly like scanf in C, line is a Variable.
-		if [[ $line = *"$1"* ]]; then #$1 is the grep we're trying to do
-			echo "${2}" | cut -d "/" -f2 
-		fi 
-		let n++;
-	done < "$2"    #$2 is file or dir name, pipeline this thing into a sort function
-
-}
+#!/bin/bash
 
 
-for file in ${*:2}; do #run on all arguments starting from second argument
-	result=0;
-	if [[ -f "$file" && $file == *hobbies.txt ]]; then #checking to see if file
-		search_file "$1" $file
-	fi 
+# function search_file {	
+# 	while read line; do 
+# 		if [[ $line = *"$1"* ]]; then
+# 		 echo "HELLLO" 
+# 		fi 
+# 		let n++;
+# 	done < "$2"    
 
-	if [[ -d "$file" ]]; then #checking to see if directory
-		source $0 "$1" $file/* 
-	fi 
+# }
+
+# echo my_echo
+# for file in ls; do 
+# 	echo "IM HEREEEEEEEE"
+# 	if [[ -f "$file" && $file == *hobbies.txt ]]; then
+# 		search_file "$1" $file/hobbies.txt
+# 	fi 
+# 	echo "CHECKING THIS IFFFFFFFFFFFF"
+# 	if [[ -d "$file" ]]; then 
+# 		echo "Im a fIle!!!!!!!"
+# 		 $0 "$1" $file/* 
+# 	fi 
+# done | sort | head -n+3
+
+for file in `ls`; do 
+
+	
+	while read line; do
+	
+		if [[ "$line" == "$1" ]]; then
+			# echo "I am printing $file because $line is equal to $1"
+			echo $file
+		fi   
+	done < $file/hobbies.txt 
+
 done | sort | head -n+3
 
 
 
 
 
-
+# echo "I am printing $file because $line is equal to $1"
 
 #why do i always need to write source
 #limit to first three, abc

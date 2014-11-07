@@ -2,13 +2,15 @@
 
 
 
-for file in ${*:2}; do #run on all arguments starting from second argument
+ #run on all arguments starting from second argument
 	# echo "this is running"
-	if [[ -d "$file" && "$file" == "MainDirectory" ]]; then 
-		cat $file/"${1}"/movies.txt | cut -d ";" -f1 $file/"${1}"/movies.txt  | sort
-	fi
+	# if [[ -d "$file" && "$file" == "MainDirectory" ]]; then 
+	# 	cat $file/"${1}"/movies.txt | cut -d ";" -f1 $file/"${1}"/movies.txt  | sort
+	# fi
+		cat "${1}"/movies.txt | cut -d ";" -f1 "${1}"/movies.txt  | sort
 
-done  2> error.txt
+
+
 
 
 
