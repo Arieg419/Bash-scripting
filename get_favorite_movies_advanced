@@ -37,22 +37,19 @@ function movieList {
 		genreOfMovie=`echo "$line" | cut -d";" -f3`
 		nameofMovie=`echo "$line" | cut -d ";" -f1`
 		yearofMovie=`echo "$line" | cut -d";" -f2`
-
-		echo $yearofMovie
-		echo $3
-		echo $4
 			
-		if [[ "$genreOfMovie" == "$2" && $5 == null ]]; then
+		if [[ "$genreOfMovie" == "$2" && "$4" == 0 ]]; then
 		echo "$nameofMovie $genreOfMovie"
 		
 	    fi
 
 	    if [[ "$genreOfMovie" == "$2" ]]; then
-	    	if (( $yearofMovie >= $4 && $yearofMovie <= $5 )); then
-	    		echo $nameofMovie
-	    	fi
-	    fi
 	    
+	    	if (( $yearofMovie >= $3 && $yearofMovie <= $4 )); then 
+	    		echo $nameofMovie
+	        fi
+	    fi
+
 	done <"$1"/movies.txt
 }
 	
