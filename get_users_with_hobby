@@ -1,57 +1,9 @@
 #!/bin/bash
 
-
-# function search_file {	
-# 	while read line; do 
-# 		if [[ $line = *"$1"* ]]; then
-# 		 echo "HELLLO" 
-# 		fi 
-# 		let n++;
-# 	done < "$2"    
-
-# }
-
-# echo my_echo
-# for file in ls; do 
-# 	echo "IM HEREEEEEEEE"
-# 	if [[ -f "$file" && $file == *hobbies.txt ]]; then
-# 		search_file "$1" $file/hobbies.txt
-# 	fi 
-# 	echo "CHECKING THIS IFFFFFFFFFFFF"
-# 	if [[ -d "$file" ]]; then 
-# 		echo "Im a fIle!!!!!!!"
-# 		 $0 "$1" $file/* 
-# 	fi 
-# done | sort | head -n+3
-
-for file in `ls`; do 
-
-	
+for file in `ls`; do
 	while read line; do
-	
 		if [[ "$line" == "$1" ]]; then
-			# echo "I am printing $file because $line is equal to $1"
 			echo $file
-		fi   
-	done < $file/hobbies.txt 
-
+		fi
+	done < $file/hobbies.txt
 done | sort | head -n+3
-
-
-
-
-
-# echo "I am printing $file because $line is equal to $1"
-
-#why do i always need to write source
-#limit to first three, abc
-#getting commented out.. why?
-#(( ciruclar brackets let me make numerical comparisons ))
-#[[ boxy brackets allow me to make comparisons based on strings, lexographic ]]
-# " string    " helps you keep spaces in a string
-# `  somethin helps you not make an evaluation
-# backticks returns value or creates evaluation of certain expression ``
-
-#where do i put the counter? one idea is to pipeline output to another file and then perform search w/Counter
-#can functions return values in bash? or zsh shell does it even matter
-

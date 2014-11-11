@@ -1,0 +1,17 @@
+#!/bin/bash
+
+for file in `ls`; do
+	movieCount=0;
+	if [[ "$file" != "$1" ]]; then
+		while read line1; do
+			while read line2; do
+				if [[ "$line1" == "$line2" ]]; then
+					let movieCount++;
+					if (( $movieCount == 3 )); then
+						echo $file
+					fi
+				fi
+			done < $file/movies.txt
+		done < $1/movies.txt
+	fi
+done 

@@ -1,0 +1,11 @@
+#!/bin/bash
+get_users_with_similar_movie_taste $1 | while read user; do
+	while read line; do
+		if(( `grep -c "$line" $1/movies.txt` == 0 )); then
+			echo "$line" | cut -d ";" -f1
+		fi
+		
+	done < "$user"/movies.txt
+		
+done | sort | uniq 
+

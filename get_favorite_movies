@@ -1,22 +1,22 @@
 #!/bin/bash
 
+found=0
 
+for file in `ls`; do
+	if [[ "$file" == "$1" ]]; then 
+		cat "${1}"/movies.txt | cut -d ";" -f1 "${1}"/movies.txt | sort
+		found=1
+	fi
+done
 
- #run on all arguments starting from second argument
-	# echo "this is running"
-	# if [[ -d "$file" && "$file" == "MainDirectory" ]]; then 
-	# 	cat $file/"${1}"/movies.txt | cut -d ";" -f1 $file/"${1}"/movies.txt  | sort
-	# fi
-		cat "${1}"/movies.txt | cut -d ";" -f1 "${1}"/movies.txt  | sort
-
-
-
-
-
+if (( $found == 0 )); then
+	found=2
+fi
 
 	
 
-
+	
+	
 
 
 

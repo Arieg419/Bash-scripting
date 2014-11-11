@@ -1,72 +1,28 @@
 #!/bin/bash
+	found=0
+	for file in `ls`;do
+		if [[ "$1" == "$file"  ]]; then
+			found=1
+		fi
+	done
 
-# function movieList {
-# 	for file in ${*:2}; do
-# 			while read line; do
-# 				genreOfMovie=`echo "$line" | cut -d";" -f3`
-# 				if [[ "$genreOfMovie" == "$3" ]]; then
-# 				   if [[ "$5" == "" ]]; then
-# 				   	nameofMovie=`echo $line | cut -d ";" -f1`
-# 				   	echo $nameofMovie
-# 				   fi
-
-# 			   		nameofMovie=`echo $line | cut -d ";" -f1`	
-# 				    yearofMovie=`echo "$line" | cut -d";" -f2`
-				   
-# 				   if (( $yearofMovie >= $4 && $yearofMovie <= $5 )); then
-# 				   	finalOutput=`echo $nameofMovie`
-# 				   	echo $finalOutput
-# 				   fi
-				   
-# 			    fi
-# 			done < "$file/"${1}"/movies.txt"  
-# 	done | sort	
-# }
-
-# for file in ${2} ; do
-# 	if [[ -d "$file" && "$file" == "MainDirectory" ]]; then
-		
-# 		movieList "$1" "$2" "$3" "$4" "$5"
-			
-# 	fi
-
-# done
-function movieList {
-	# echo $1 $2 $3 $4
+	if (( $found == 0 )); then
+		found=2
+	else		
 	while read line; do
 		genreOfMovie=`echo "$line" | cut -d";" -f3`
 		nameofMovie=`echo "$line" | cut -d ";" -f1`
 		yearofMovie=`echo "$line" | cut -d";" -f2`
-			
-		if [[ "$genreOfMovie" == "$2" && "$4" == 0 ]]; then
-		echo "$nameofMovie $genreOfMovie"
+		if [[ "$genreOfMovie" == "$2" ]]; then
+		    numOfParam=`echo $#`
+			if(( $numOfParam == 2 )); then
+				echo "$nameofMovie"
+			elif (( $yearofMovie >= $3 && $yearofMovie <= $4 )); then
+					echo $nameofMovie
+			fi
+		fi
 		
-	    fi
+	done < "$1"/movies.txt | sort
 
-	    if [[ "$genreOfMovie" == "$2" ]]; then
-	    
-	    	if (( $yearofMovie >= $3 && $yearofMovie <= $4 )); then 
-	    		echo $nameofMovie
-	        fi
-	    fi
+         fi
 
-	done <"$1"/movies.txt
-}
-	
-	movieList "$1" "$2" "$3" "$4"
-
-
-
-
-#$1- name of person
-#$2 - genre of movie
-#$3 - year optional
-#$4 - year optional
-
-# cd $toReturn
-
-# flow of things 
-# 1. call movie list, get all movies 
-# 2. send movie list to genreChecker
-# 3. send all right genre movies to yearChecker
-# 4. echo all movie names in sort in alphabet order
